@@ -1,0 +1,42 @@
+=== LOAD ===
+Maths shape: (395, 34) | Portuguese shape: (649, 34)
+Maths: missing columns=[] extra columns=[]
+Portuguese: missing columns=[] extra columns=[]
+
+=== QUALITY CHECKS ===
+Combined shape: (1044, 34)
+Missing values per column (non-zero only):
+Series([], dtype: int64)
+Fully duplicated rows (within the combined file): 0
+
+Numeric ranges:
+           age  absences       G1       G2       G3
+count  1044.00   1044.00  1044.00  1044.00  1044.00
+mean     16.73      4.43    11.21    11.25    11.34
+std       1.24      6.21     2.98     3.29     3.86
+min      15.00      0.00     0.00     0.00     0.00
+25%      16.00      0.00     9.00     9.00    10.00
+50%      17.00      2.00    11.00    11.00    11.00
+75%      18.00      6.00    13.00    13.00    14.00
+max      22.00     75.00    19.00    19.00    20.00
+G1 outside 0-20: 0 rows
+G2 outside 0-20: 0 rows
+G3 outside 0-20: 0 rows
+Records with G3 == 0 (possible dropouts): 53
+Absences > 30 (potential outliers): 6
+
+=== AFTER CLEANING ===
+Final shape: (1044, 42)
+Pass rate by subject:
+subject
+Maths         0.671
+Portuguese    0.846
+Name: pass_flag, dtype: float64
+Grade band counts:
+grade_band
+Average      520
+Fail         230
+Good         224
+Excellent     70
+Name: count, dtype: int64
+Correlation of absences with G3: -0.046

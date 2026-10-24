@@ -1,0 +1,82 @@
+=== PASS / FAIL CLASSIFICATION (5-fold x 3 repeats, all 1,044 students) ===
+Pass rate (class balance): 78.0%
+Main results use GROUPED folds (same-student rows kept together). Row-level shown for comparison.
+
+GROUPED validation (reported):
+        scenario               model  accuracy  acc_sd  f1_macro  roc_auc
+A: G1 + G2 known Baseline (majority)     0.780   0.000     0.438    0.500
+A: G1 + G2 known Logistic Regression     0.918   0.015     0.879    0.968
+A: G1 + G2 known       Random Forest     0.916   0.012     0.872    0.970
+A: G1 + G2 known   Gradient Boosting     0.913   0.014     0.870    0.965
+B: only G1 known Baseline (majority)     0.780   0.000     0.438    0.500
+B: only G1 known Logistic Regression     0.874   0.018     0.810    0.932
+B: only G1 known       Random Forest     0.867   0.017     0.783    0.930
+B: only G1 known   Gradient Boosting     0.869   0.014     0.805    0.933
+    C: no grades Baseline (majority)     0.780   0.000     0.438    0.500
+    C: no grades Logistic Regression     0.797   0.017     0.628    0.768
+    C: no grades       Random Forest     0.792   0.013     0.552    0.801
+    C: no grades   Gradient Boosting     0.790   0.021     0.640    0.780
+
+Row-level validation (comparison only, optimistic):
+        scenario               model  accuracy  acc_sd  f1_macro  roc_auc
+A: G1 + G2 known Baseline (majority)     0.780   0.000     0.438    0.500
+A: G1 + G2 known Logistic Regression     0.918   0.013     0.878    0.969
+A: G1 + G2 known       Random Forest     0.916   0.014     0.870    0.972
+A: G1 + G2 known   Gradient Boosting     0.915   0.017     0.874    0.967
+B: only G1 known Baseline (majority)     0.780   0.000     0.438    0.500
+B: only G1 known Logistic Regression     0.868   0.021     0.801    0.934
+B: only G1 known       Random Forest     0.868   0.020     0.782    0.929
+B: only G1 known   Gradient Boosting     0.873   0.021     0.809    0.935
+    C: no grades Baseline (majority)     0.780   0.000     0.438    0.500
+    C: no grades Logistic Regression     0.795   0.024     0.632    0.769
+    C: no grades       Random Forest     0.795   0.013     0.563    0.797
+    C: no grades   Gradient Boosting     0.796   0.017     0.651    0.782
+
+=== FINAL GRADE REGRESSION (grouped 5-fold x 3 repeats) ===
+        scenario             model   MAE  RMSE     R2
+A: G1 + G2 known   Baseline (mean) 2.830 3.859 -0.002
+A: G1 + G2 known             Ridge 0.986 1.596  0.827
+A: G1 + G2 known     Random Forest 0.889 1.475  0.851
+A: G1 + G2 known Gradient Boosting 0.915 1.481  0.851
+B: only G1 known   Baseline (mean) 2.830 3.859 -0.002
+B: only G1 known             Ridge 1.539 2.249  0.660
+B: only G1 known     Random Forest 1.393 2.008  0.728
+B: only G1 known Gradient Boosting 1.390 1.998  0.730
+    C: no grades   Baseline (mean) 2.830 3.859 -0.002
+    C: no grades             Ridge 2.499 3.442  0.202
+    C: no grades     Random Forest 2.340 3.216  0.303
+    C: no grades Gradient Boosting 2.429 3.273  0.277
+
+=== PERMUTATION IMPORTANCE (Random Forest, grouped hold-out fold, top 10) ===
+
+B: only G1 known
+G1          0.2455
+failures    0.0293
+subject     0.0168
+health      0.0031
+school      0.0027
+goout       0.0024
+higher      0.0023
+Fedu        0.0017
+internet    0.0013
+Mjob        0.0011
+
+C: no grades
+failures    0.1424
+subject     0.0722
+school      0.0269
+higher      0.0117
+goout       0.0071
+Fedu        0.0052
+famrel      0.0052
+Mjob        0.0042
+famsize     0.0039
+paid        0.0036
+
+=== EARLY-WARNING MODEL (scenario B, Logistic Regression) ===
+Risk scores are out-of-fold with grouped folds: a student is scored by a model that never saw their rows.
+            students  actual_fail_rate
+risk_level                            
+Low              713             0.050
+Medium           124             0.371
+High             207             0.715

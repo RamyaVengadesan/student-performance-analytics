@@ -1,0 +1,52 @@
+=== DATA USED ===
+All students: 1044 | Active (G3 > 0, dropout records excluded): 991
+
+=== 1. SUBJECT DIFFERENCE IN FINAL GRADE (Welch t-test, all students) ===
+Maths mean 10.42 vs Portuguese mean 11.91 | t=-5.67, p=2.22e-08, Cohen's d=-0.39
+
+=== 2. CORRELATIONS WITH FINAL GRADE G3 (Spearman, active students) ===
+   feature     rho      p  p_holm  significant
+        G2  0.9487 0.0000  0.0000         True
+        G1  0.8808 0.0000  0.0000         True
+  failures -0.3795 0.0000  0.0000         True
+  absences -0.2385 0.0000  0.0000         True
+      Medu  0.2376 0.0000  0.0000         True
+ studytime  0.1926 0.0000  0.0000         True
+      Fedu  0.1854 0.0000  0.0000         True
+      Dalc -0.1829 0.0000  0.0000         True
+      Walc -0.1776 0.0000  0.0000         True
+     goout -0.1329 0.0000  0.0002         True
+traveltime -0.1113 0.0004  0.0022         True
+  freetime -0.0886 0.0052  0.0209         True
+    health -0.0836 0.0085  0.0254         True
+       age -0.0758 0.0170  0.0339         True
+    famrel  0.0515 0.1049  0.1049        False
+
+=== 3. ABSENCE BANDS (Kruskal-Wallis, active students) ===
+H=58.29, p=1.37e-12
+Spearman absences vs G3: rho=-0.238, p=2.79e-14
+
+=== 4. CHI-SQUARE TESTS ON PASS/FAIL (all students) ===
+                 factor     chi2      p  cramers_v  p_holm  significant
+ Wants higher education  47.9415 0.0000     0.2184  0.0000         True
+Has past failures (any) 139.7191 0.0000     0.3689  0.0000         True
+         Urban vs rural   5.2833 0.0215     0.0737  0.0861        False
+       Internet at home   3.1823 0.0744     0.0581  0.2233        False
+         School support   1.0131 0.3142     0.0348  0.6283        False
+                    Sex   0.5017 0.4787     0.0243  0.6283        False
+  Romantic relationship   6.0509 0.0139     0.0785  0.0695        False
+
+=== 5. INTERNET ACCESS WITHIN URBAN AND RURAL (Mann-Whitney, active students) ===
+U: internet mean 12.34 (n=612) vs none 11.11 (n=114) | p=0.0000, d=0.42
+R: internet mean 11.31 (n=177) vs none 11.58 (n=88) | p=0.4485, d=-0.10
+
+=== 6. STUDY TIME: LEVEL AND GRADE CHANGE (Kruskal-Wallis, active students) ===
+G3 across study-time levels: H=39.55, p=0.0000
+grade_change across study-time levels: H=1.85, p=0.6047
+
+=== 7. PARENT EDUCATION (Spearman with G3, active students) ===
+avg_parent_edu vs G3: rho=0.232, p=1.28e-13
+
+=== 8. HOW MUCH DOES G2 EXPLAIN? (squared Pearson, all students) ===
+G1 vs G3: r=0.809, R^2=0.655
+G2 vs G3: r=0.911, R^2=0.829

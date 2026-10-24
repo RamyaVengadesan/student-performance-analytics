@@ -1,0 +1,92 @@
+
+### Q1 Overview by subject
+   subject  records  avg_g1  avg_g2  avg_g3  pass_rate_pct  avg_absences
+     Maths      395   10.91   10.71   10.42           67.1          5.71
+Portuguese      649   11.40   11.57   11.91           84.6          3.66
+
+### Q2 Absence band vs final grade (dropout records excluded)
+absence_band  records  avg_g3  pass_rate_pct
+           0      306   12.77           89.9
+         1-5      368   11.91           83.4
+        6-10      202   11.67           78.7
+         11+      115   10.37           63.5
+
+### Q3 Study time vs average grade change (G3 minus G1)
+ studytime  records  avg_grade_change  avg_g3
+         1      296              0.56   11.33
+         2      480              0.53   11.88
+         3      156              0.56   12.97
+         4       59              0.34   12.90
+
+### Q4 Past failures vs pass rate
+ failures  records  pass_rate_pct  avg_g3
+        0      861           85.0   12.05
+        1      120           51.7    8.43
+        2       33           33.3    7.48
+        3       30           30.0    6.80
+
+### Q5 Wants higher education vs results
+wants_higher_edu  records  avg_g3  pass_rate_pct
+              No       89    8.35           48.3
+             Yes      955   11.62           80.7
+
+### Q6 Parent education vs pass rate
+parent_edu_level  records  avg_g3  pass_rate_pct
+      1 Low (<2)      275   10.38           71.3
+2 Medium (2-2.9)      326   11.04           76.4
+     3 High (3+)      443   12.16           83.3
+
+### Q7 Urban vs rural and internet access
+address internet_access  records  avg_g3
+      R     No internet       96   10.61
+      R        Internet      189   10.59
+      U     No internet      121   10.47
+      U        Internet      638   11.84
+
+### Q8 Alcohol consumption vs grade
+ alc_total  records  avg_g3
+         2      370   12.44
+         3      173   12.38
+         4      150   11.85
+         5      113   11.90
+         6       81   10.37
+         7       46   11.15
+         8       25   10.92
+        10       24   10.38
+
+### Q9 Top 3 records per subject and school (window function)
+ student_id    subject school  G3  absences  rank_in_group
+         48      Maths     GP  20         4              1
+          9      Maths     GP  19         0              2
+        287      Maths     GP  19         5              3
+        375      Maths     MS  19         0              1
+        360      Maths     MS  16         0              2
+        392      Maths     MS  16         3              3
+        734 Portuguese     GP  19         0              1
+        577 Portuguese     GP  18         0              2
+        581 Portuguese     GP  18         0              3
+       1032 Portuguese     MS  19         4              1
+        905 Portuguese     MS  18         0              2
+        945 Portuguese     MS  18         0              3
+
+### Q10 Records far below their subject average (window average, top 8)
+ student_id    subject  G3  subject_avg  gap_to_avg
+        568 Portuguese   1        12.19      -11.19
+        217      Maths   4        11.52       -7.52
+        675 Portuguese   5        12.19       -7.19
+         19      Maths   5        11.52       -6.52
+         73      Maths   5        11.52       -6.52
+         80      Maths   5        11.52       -6.52
+        101      Maths   5        11.52       -6.52
+        249      Maths   5        11.52       -6.52
+
+### Q11 At-risk records by school and subject (uses view v_at_risk)
+   subject school  at_risk_records  avg_absences  avg_past_failures
+     Maths     GP              109          10.4               0.56
+Portuguese     GP               84           8.7               0.57
+Portuguese     MS               74           4.3               0.65
+     Maths     MS               17           6.3               0.76
+
+### Q12 Maths vs Portuguese for students matched one-to-one on 13 background attributes (approximate, no student id exists)
+ matched_pairs  pass_por_fail_maths  pass_maths_fail_por  avg_maths_g3  avg_por_g3
+           358                   96                    7         10.55       12.58

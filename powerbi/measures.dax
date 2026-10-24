@@ -1,0 +1,42 @@
+// Student Performance & Attendance Analytics - Power BI measures
+// Load data/processed/powerbi_students.csv as a table named: Students
+// Each row is one student-subject record, not a unique person, so COUNTROWS counts records.
+// Create a measures table (Home > Enter data > name it "_Measures") and add these.
+// NOTE: written by hand and not run in Power BI Desktop; check each measure after pasting.
+
+Total Records = COUNTROWS ( Students )
+
+Pass Rate =
+DIVIDE ( CALCULATE ( COUNTROWS ( Students ), Students[pass_flag] = 1 ), [Total Records] )
+
+Avg Final Grade = AVERAGE ( Students[G3] )
+
+Avg Absences = AVERAGE ( Students[absences] )
+
+// Active records = excludes G3 = 0 records (they have no attendance data)
+Active Records = CALCULATE ( [Total Records], Students[dropout_flag] = 0 )
+
+Active Pass Rate =
+CALCULATE ( [Pass Rate], Students[dropout_flag] = 0 )
+
+Active Avg Final Grade =
+CALCULATE ( [Avg Final Grade], Students[dropout_flag] = 0 )
+
+Possible Dropouts = CALCULATE ( [Total Records], Students[dropout_flag] = 1 )
+
+High Risk Records = CALCULATE ( [Total Records], Students[risk_level] = "High" )
+
+High Risk % = DIVIDE ( [High Risk Records], [Total Records] )
+
+Actual Fail Rate = 1 - [Pass Rate]
+
+Avg Grade Change = AVERAGE ( Students[grade_change] )
+
+// Gap versus the overall average, useful in a table or card
+Grade Gap vs Overall =
+[Avg Final Grade] - CALCULATE ( [Avg Final Grade], ALL ( Students ) )
+
+// Sort helper for the absence band axis: create a calculated column in Students
+// Absence Band Order =
+// SWITCH ( Students[absence_band], "None (0)", 1, "Low (1-5)", 2, "Medium (6-10)", 3, "High (11+)", 4 )
+// Then select the absence_band column > Column tools > Sort by column > Absence Band Order
