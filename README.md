@@ -1,8 +1,21 @@
 # Student Performance & Attendance Analytics
 
-An end-to-end data analytics project on real secondary-school data: cleaning, SQL analysis, statistical testing, predictive modelling and dashboards. It asks which attendance, study and background factors are linked to student grades, and whether students at risk of failing can be flagged early.
+`PYTHON` · `SQL` · `EXCEL` · `POWER BI` · `MACHINE LEARNING`
 
-![Pass rate by key factors](reports/charts/04_pass_rate_factors.png)
+An end-to-end data analytics project that explores student performance, attendance patterns, academic progress and early-warning risk indicators on real secondary-school data. It asks which attendance, study and background factors are linked to grades, and whether students at risk of failing can be flagged early.
+
+![Pass rate by key factors](screenshots/pass_rate_factors.png)
+
+## Project highlights
+
+- Data cleaning and feature engineering with Pandas and NumPy
+- SQL analysis in SQLite (joins, CTEs, window functions, views)
+- Exploratory data analysis and statistical hypothesis testing
+- Early-warning model for failing students (ROC-AUC 0.93)
+- Formula-driven Excel dashboard
+- Power BI measures, theme and build guide
+
+**Technologies:** Python, Pandas, NumPy, SciPy, scikit-learn, Matplotlib, Seaborn, SQLite, Excel (openpyxl), Power BI.
 
 ## Dataset
 
@@ -22,6 +35,16 @@ Note: each row is one student-subject record, so the 1,044 records are not 1,044
 - **Data quality catch:** 53 records with a final grade of 0 all have 0 absences, which hides the attendance effect unless they are excluded. They are labelled possible dropouts, not confirmed ones.
 
 Full write-up with tables and limitations: [`reports/insights_report.md`](reports/insights_report.md).
+
+## Screenshots
+
+| Excel dashboard | Grade distribution |
+|---|---|
+| ![Excel dashboard](screenshots/excel_dashboard.png) | ![Grade analysis](screenshots/grade_analysis.png) |
+
+| Absences vs final grade | Feature importance |
+|---|---|
+| ![Attendance analysis](screenshots/attendance_analysis.png) | ![Feature importance](screenshots/feature_importance.png) |
 
 ## Project phases
 
@@ -46,7 +69,9 @@ reports/             insights report, stats and model results, charts
 excel/               formula-driven Excel dashboard
 powerbi/             DAX measures, theme, build guide
 models/              saved early-warning model
+screenshots/         dashboard and chart previews used in this README
 docs/                problem definition and data dictionary
+LICENSE              MIT licence (code only)
 run_all.py / .sh     run phases 2 to 6 in order
 ```
 
@@ -70,7 +95,7 @@ If you run the scripts in `src/` individually, run them from the repository root
 - **Modelling (scikit-learn):** logistic regression, random forest and gradient boosting against a baseline, cross-validated in three scenarios (all grades, first-period grade only, no grades). Folds are grouped by background attributes so the same student's Maths and Portuguese rows stay together. Permutation importance and out-of-fold risk scores.
 - **Dashboards:** an Excel workbook where every figure is a live formula on the data sheet, plus Power BI measures and a four-page build guide.
 
-![Model comparison](reports/charts/07_model_comparison.png)
+![Model comparison](screenshots/model_comparison.png)
 
 ## Limitations
 
@@ -80,6 +105,12 @@ Associations, not causes. Data come from two schools in 2005-2006. Students appe
 
 Python, Pandas, NumPy, SciPy, scikit-learn, Matplotlib, Seaborn, SQL (SQLite), Excel (openpyxl), Power BI.
 
+## Author
+
+**Ramya Vengadesan**
+GitHub: add your profile link · LinkedIn: add your profile link
+
 ## Licence and credits
 
-The dataset keeps its own CC BY 4.0 licence and attribution (Cortez & Silva, 2008).
+- Code and documentation: [MIT License](LICENSE).
+- Dataset: UCI Student Performance (Cortez & Silva, 2008), kept under its own CC BY 4.0 licence with attribution. The MIT licence does not cover the data in `data/raw/`.
